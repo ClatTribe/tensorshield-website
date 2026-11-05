@@ -1,0 +1,43 @@
+.pg-contact .contact { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 28px; align-items: start; }
+.pg-contact .channels { display: grid; gap: 14px; position: sticky; top: 100px; }
+.pg-contact .channel { display: flex; gap: 18px; align-items: center; padding: 20px 22px; }
+.pg-contact .channel .icon-tile { margin: 0; flex: none; }
+.pg-contact .channel span { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.pg-contact .channel strong { display: block; font-size: 1.08rem; font-weight: 550; letter-spacing: -0.01em; word-break: break-word; }
+.pg-contact .channel small { font-size: 0.82rem; }
+.pg-contact .channel:hover { transform: translateY(-2px); }
+.pg-contact .security-note { display: flex; gap: 12px; align-items: flex-start; padding: 16px 4px; color: var(--muted); font-size: 0.88rem; }
+.pg-contact .security-note svg { color: var(--lime); flex: none; margin-top: 2px; }
+.pg-contact .security-note p { margin: 0; }
+.pg-contact .security-note a { color: var(--lime); }
+
+.pg-contact .form { display: grid; gap: 18px; }
+.pg-contact .form-head h2 { font-size: 1.7rem; }
+.pg-contact .form-head p { margin: 6px 0 0; font-size: 0.92rem; }
+.pg-contact .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.pg-contact label { display: grid; gap: 8px; font-size: 0.86rem; color: var(--muted); }
+.pg-contact input, .pg-contact select, .pg-contact textarea {
+  width: 100%; font: inherit; font-size: 0.95rem; color: var(--text); background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--line-2); border-radius: 12px; padding: 12px 14px; transition: border-color 0.2s, box-shadow 0.2s;
+}
+.pg-contact select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239aa3b2' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 36px; }
+.pg-contact input:focus, .pg-contact select:focus, .pg-contact textarea:focus { outline: none; border-color: rgba(195, 255, 79, 0.6); box-shadow: 0 0 0 4px rgba(195, 255, 79, 0.1); }
+.pg-contact input[type='month'] { color-scheme: dark; }
+.pg-contact input:user-invalid { border-color: rgba(255, 92, 122, 0.7); }
+.pg-contact fieldset { border: 0; padding: 0; margin: 0; }
+.pg-contact legend { font-size: 0.86rem; color: var(--muted); margin-bottom: 10px; }
+.pg-contact .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pg-contact .pill { display: inline-flex; cursor: pointer; }
+.pg-contact .pill input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.pg-contact .pill span { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-2); font-size: 0.86rem; color: var(--muted); transition: all 0.2s; }
+.pg-contact .pill input:checked + span { background: rgba(195, 255, 79, 0.12); border-color: rgba(195, 255, 79, 0.6); color: var(--lime); }
+.pg-contact .pill input:focus-visible + span { outline: 2px solid var(--lime); outline-offset: 2px; }
+.pg-contact .hp { position: absolute; left: -9999px; }
+.pg-contact .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 0.85rem; line-height: 1.55; }
+.pg-contact .consent input { width: 18px; height: 18px; flex: none; margin-top: 2px; accent-color: var(--lime); padding: 0; }
+.pg-contact .consent a { color: var(--lime); }
+.pg-contact .status { margin: 0; font-size: 0.92rem; min-height: 1.4em; }
+.pg-contact .status.ok { color: var(--lime); }
+.pg-contact .status.err { color: var(--crit); }
+@media (max-width: 900px) { .pg-contact .contact { grid-template-columns: 1fr; } .pg-contact .channels { position: static; } }
+@media (max-width: 560px) { .pg-contact .row2 { grid-template-columns: 1fr; } }

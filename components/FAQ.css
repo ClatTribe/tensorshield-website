@@ -1,0 +1,14 @@
+.ts-faq .faq-wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.ts-faq .faq-head { position: sticky; top: 110px; }
+.ts-faq .faq-head p { margin-top: 16px; }
+.ts-faq .faq-list { display: grid; gap: 12px; }
+.ts-faq .faq { border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); transition: border-color 0.3s, background 0.3s; }
+.ts-faq .faq[open] { border-color: var(--line-2); background: var(--surface-2); }
+.ts-faq .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 20px 22px; font-weight: 550; font-size: 1.02rem; letter-spacing: -0.01em; }
+.ts-faq .faq summary::-webkit-details-marker { display: none; }
+.ts-faq .faq p { padding: 0 22px 22px; margin: 0; color: var(--muted); line-height: 1.7; }
+.ts-faq .plus { position: relative; flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--line-2); }
+.ts-faq .plus::before, .ts-faq .plus::after { content: ''; position: absolute; left: 50%; top: 50%; width: 9px; height: 1.5px; background: var(--lime); transform: translate(-50%, -50%); transition: transform 0.3s var(--ease); }
+.ts-faq .plus::after { transform: translate(-50%, -50%) rotate(90deg); }
+.ts-faq .faq[open] .plus::after { transform: translate(-50%, -50%) rotate(0deg); }
+@media (max-width: 860px) { .ts-faq .faq-wrap { grid-template-columns: 1fr; gap: 28px; } .ts-faq .faq-head { position: static; } }

@@ -1,0 +1,54 @@
+.ts-loop { position: relative; width: 100%; max-width: 480px; aspect-ratio: 1; margin: 0 auto; }
+.ts-loop > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+/* Travelling dot: a rotating wrapper the size of the ring, dot pinned at 12 o'clock. Same clock as the sweep. */
+.ts-loop .orbit { position: absolute; inset: 12.5%; border-radius: 50%; animation: ts-loop-spin 9s linear infinite; z-index: 1; pointer-events: none; }
+.ts-loop .orbit i { position: absolute; left: 50%; top: 0; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 4px rgba(195, 255, 79, 0.35), 0 0 24px 6px rgba(195, 255, 79, 0.7); }
+
+/* Comet tail sweeping around the ring, one lap per 9s, head starting at 12 o'clock */
+.ts-loop .sweep {
+  position: absolute; inset: calc(12.5% - 10px); border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0deg 250deg, rgba(195, 255, 79, 0.05) 270deg, rgba(195, 255, 79, 0.55) 357deg, transparent 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 20px), #000 calc(100% - 1px), transparent 100%);
+  mask: radial-gradient(farthest-side, transparent calc(100% - 22px), #000 calc(100% - 20px), #000 calc(100% - 1px), transparent 100%);
+  animation: ts-loop-spin 9s linear infinite;
+  filter: blur(1px);
+}
+@keyframes ts-loop-spin { to { transform: rotate(360deg); } }
+
+.ts-loop .node {
+  position: absolute; transform: translate(-50%, -50%); z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px;
+  background: rgba(13, 16, 22, 0.95); border: 1px solid var(--line-2); color: var(--muted);
+  font-size: 0.86rem; font-weight: 550; white-space: nowrap;
+  animation: ts-loop-node 9s infinite;
+}
+.ts-loop .node svg { color: var(--lime); }
+@keyframes ts-loop-node {
+  0% { color: var(--lime); background: #18210f; border-color: var(--lime); box-shadow: 0 0 34px rgba(195, 255, 79, 0.5); }
+  14% { color: var(--text); background: rgba(13, 16, 22, 0.95); border-color: rgba(195, 255, 79, 0.45); box-shadow: 0 0 0 rgba(0, 0, 0, 0); }
+  30%, 100% { color: var(--muted); background: rgba(13, 16, 22, 0.95); border-color: var(--line-2); box-shadow: none; }
+}
+
+.ts-loop .center { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; gap: 6px; pointer-events: none; }
+.ts-loop .center .mono { font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; }
+.ts-loop .center strong { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.04em; font-weight: 600; }
+.ts-loop .center .sub { color: var(--muted); font-size: 0.88rem; }
+
+/* Synced step list */
+.ts-loop-steps { list-style: none; margin: 28px 0 0; padding: 0; display: grid; gap: 8px; }
+.ts-loop-steps li {
+  display: flex; gap: 14px; align-items: baseline; padding: 11px 16px; border-radius: 12px; border: 1px solid transparent;
+  color: var(--muted); font-size: 0.98rem; animation: ts-loop-step 9s infinite;
+}
+.ts-loop-steps .n { color: var(--dim); font-size: 0.75rem; }
+.ts-loop-steps strong { color: var(--text); font-weight: 600; }
+@keyframes ts-loop-step {
+  0%, 15% { background: rgba(195, 255, 79, 0.07); border-color: rgba(195, 255, 79, 0.3); color: var(--text); }
+  17%, 100% { background: transparent; border-color: transparent; }
+}
+
+@media (max-width: 520px) { .ts-loop .node { font-size: 0.76rem; padding: 7px 11px; } }
+@media (prefers-reduced-motion: reduce) {
+  .ts-loop .sweep, .ts-loop .orbit, .ts-loop .node, .ts-loop-steps li { animation: none; }
+}

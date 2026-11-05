@@ -1,0 +1,5 @@
+.ts-cta .cta { position: relative; overflow: hidden; border-radius: 32px; border: 1px solid var(--line-2); background: linear-gradient(160deg, #0f1410, #0a0d12 60%); padding: clamp(48px, 8vw, 96px) var(--gutter); text-align: center; }
+.ts-cta .cta-inner { max-width: 760px; margin: 0 auto; }
+.ts-cta h2 { font-size: clamp(2rem, 4.6vw, 3.4rem); }
+.ts-cta p { color: var(--muted); font-size: 1.12rem; margin: 20px auto 32px; max-width: 580px; }
+.ts-cta .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }

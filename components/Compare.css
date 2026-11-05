@@ -1,0 +1,22 @@
+.ts-compare .cmp { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 0; font-size: 0.95rem; border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+.ts-compare .cmp th, .ts-compare .cmp td { padding: 17px 20px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.ts-compare .cmp tbody tr:last-child td { border-bottom: 0; }
+.ts-compare .cmp thead th { background: var(--surface-2); color: var(--muted); font-weight: 500; font-size: 0.88rem; }
+.ts-compare .cmp td { color: var(--muted); }
+.ts-compare .cmp .lbl { color: var(--text); font-weight: 500; width: 24%; }
+.ts-compare .cmp .us { background: rgba(195, 255, 79, 0.05); color: var(--text); }
+.ts-compare .cmp thead .us { color: var(--lime); font-weight: 600; font-size: 0.95rem; }
+.ts-compare .cmp .strong { font-weight: 600; }
+.ts-compare .cmp .ok .v::before { content: '✓ '; color: var(--lime); font-weight: 700; }
+.ts-compare .cmp .bad .v::before { content: '✕ '; color: var(--crit); font-weight: 700; }
+
+@media (max-width: 720px) {
+  .ts-compare .cmp { min-width: 0; border: 0; border-radius: 0; }
+  .ts-compare .cmp thead { display: none; }
+  .ts-compare .cmp, .ts-compare .cmp tbody, .ts-compare .cmp tr, .ts-compare .cmp td { display: block; width: 100%; }
+  .ts-compare .cmp tr { border: 1px solid var(--line); border-radius: var(--r); margin-bottom: 12px; overflow: hidden; background: var(--surface); }
+  .ts-compare .cmp td { display: grid; grid-template-columns: 112px 1fr; gap: 10px; padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+  .ts-compare .cmp .lbl { display: block; width: 100%; background: var(--surface-2); font-weight: 600; padding: 12px 16px; }
+  .ts-compare .cmp td[data-col]::before { content: attr(data-col); color: var(--dim); font-size: 0.78rem; font-weight: 500; }
+  .ts-compare .cmp td.us[data-col]::before { color: var(--lime); }
+}

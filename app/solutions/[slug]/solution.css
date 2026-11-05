@@ -1,0 +1,30 @@
+.pg-solution .sol-hero { position: relative; overflow: hidden; padding: clamp(64px, 10vw, 120px) 0 clamp(56px, 8vw, 96px); }
+.pg-solution .sol-hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.pg-solution .sol-hero h1 { font-size: clamp(2.4rem, 5.2vw, 4.2rem); }
+.pg-solution .lead { color: var(--muted); font-size: clamp(1.05rem, 1.6vw, 1.22rem); margin-top: 22px; max-width: 580px; }
+.pg-solution .hero-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+.pg-solution .built { display: inline-flex; gap: 8px; align-items: center; margin-top: 24px; font-size: 0.86rem; color: var(--muted); }
+.pg-solution .built svg { color: var(--lime); }
+.pg-solution .sol-mock { position: relative; }
+.pg-solution .sol-mock::before { content: ''; position: absolute; inset: -40px; background: radial-gradient(ellipse at center, rgba(195, 255, 79, 0.14), transparent 65%); z-index: -1; }
+@media (max-width: 960px) { .pg-solution .sol-hero-grid { grid-template-columns: 1fr; } }
+
+.pg-solution .help { display: flex; gap: 20px; align-items: flex-start; }
+.pg-solution .help .icon-tile { flex: none; margin: 0; }
+
+.pg-solution .sol-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; }
+.pg-solution .sol-steps li { position: relative; padding: 26px 24px; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
+.pg-solution .sol-steps li::after { content: ''; position: absolute; top: 38px; right: -17px; width: 18px; height: 1px; background: linear-gradient(90deg, var(--lime), transparent); }
+.pg-solution .sol-steps li:last-child::after { display: none; }
+.pg-solution .sol-steps .num { display: inline-block; font-size: 0.78rem; color: var(--lime); background: rgba(195, 255, 79, 0.1); border: 1px solid rgba(195, 255, 79, 0.25); padding: 3px 9px; border-radius: 999px; margin-bottom: 16px; }
+.pg-solution .sol-steps h3 { margin-bottom: 8px; }
+.pg-solution .sol-steps p { color: var(--muted); margin: 0; font-size: 0.95rem; }
+@media (max-width: 960px) { .pg-solution .sol-steps { grid-template-columns: 1fr 1fr; } .pg-solution .sol-steps li::after { display: none; } }
+@media (max-width: 560px) { .pg-solution .sol-steps { grid-template-columns: 1fr; } }
+
+.pg-solution .plan-card .label { color: var(--lime); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 12px; }
+.pg-solution .plan-card .amount { font-size: 2.8rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; margin: 0; color: var(--text); }
+.pg-solution .plan-card .amount small { font-size: 0.9rem; font-weight: 400; color: var(--dim); letter-spacing: 0; }
+.pg-solution .plan-card .amount > span:last-child { font-size: 0.95rem; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.pg-solution .plan-card .billing { font-size: 0.82rem; margin: 10px 0 22px; }
+.pg-solution .plan-card .checks { margin-bottom: 26px; }

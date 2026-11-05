@@ -1,0 +1,21 @@
+.ts-pricing .toggles { display: flex; justify-content: center; margin-bottom: 36px; }
+.seg { display: inline-flex; padding: 4px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(255, 255, 255, 0.03); }
+.seg button { font: inherit; font-size: 0.88rem; color: var(--muted); background: none; border: 0; padding: 8px 18px; border-radius: 999px; cursor: pointer; transition: all 0.2s; }
+.seg button.on { background: var(--text); color: #0a0c10; }
+
+.ts-pricing .offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.ts-pricing .offer { position: relative; display: flex; flex-direction: column; padding: 32px; border-radius: var(--r-lg); border: 1px solid var(--line); background: linear-gradient(180deg, var(--surface-2), var(--surface)); }
+.ts-pricing .offer.featured { background: linear-gradient(180deg, #141a12, #0d1110 60%); transform: translateY(-8px); }
+.ts-pricing .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); white-space: nowrap; box-shadow: 0 8px 24px -8px rgba(195, 255, 79, 0.7); font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 10px; border-radius: 999px; background: var(--lime); color: #0b1004; font-weight: 600; }
+.ts-pricing .best { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--lime); margin: 0 0 14px; }
+.ts-pricing .offer h3 { font-size: 1.45rem; }
+.ts-pricing .tagline { color: var(--muted); font-size: 0.95rem; margin: 8px 0 22px; min-height: 3em; }
+.ts-pricing .price { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.ts-pricing .from { color: var(--dim); font-size: 0.9rem; }
+.ts-pricing .price .amt { font-size: 2.7rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+.ts-pricing .per { color: var(--muted); font-size: 0.95rem; }
+.ts-pricing .billing { font-size: 0.82rem; color: var(--dim); margin: 10px 0 24px; min-height: 1.4em; }
+.ts-pricing .offer .btn { margin-bottom: 26px; }
+.ts-pricing .foot { text-align: center; font-size: 0.88rem; margin-top: 28px; }
+.ts-pricing .foot a { color: var(--lime); }
+@media (max-width: 960px) { .ts-pricing .offers { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; } .ts-pricing .offer.featured { transform: none; } .ts-pricing .tagline { min-height: 0; } }

@@ -1,0 +1,28 @@
+.ts-console {
+  position: relative; border-radius: 20px; overflow: hidden; text-align: left;
+  background: linear-gradient(180deg, rgba(18, 22, 30, 0.92), rgba(9, 11, 15, 0.96));
+  border: 1px solid var(--line-2);
+  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(195, 255, 79, 0.05), 0 0 80px -20px rgba(195, 255, 79, 0.2);
+  backdrop-filter: blur(10px);
+}
+.ts-console .console-bar { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.02); }
+.ts-console .lights { display: flex; gap: 6px; }
+.ts-console .lights i { width: 10px; height: 10px; border-radius: 50%; background: #2a2f3a; }
+.ts-console .console-title { font-size: 0.75rem; color: var(--dim); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ts-console .live { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 0.7rem; color: var(--lime); text-transform: uppercase; letter-spacing: 0.1em; }
+.ts-console .console-body { padding: 18px 18px 8px; font-size: 0.8rem; line-height: 1.85; min-height: 330px; }
+.ts-console .ln { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: #c9d0db; }
+.ts-console .tag { display: inline-block; min-width: 84px; }
+.ts-console .tag.cyan { color: var(--cyan); }
+.ts-console .tag.lime { color: var(--lime); }
+.ts-console .tag.crit { color: var(--crit); }
+.ts-console .tag.dim { color: var(--dim); }
+.ts-console .ln:has(.crit) .msg { color: #ffd6de; }
+.ts-console .cursor { display: inline-block; width: 8px; height: 15px; background: var(--lime); vertical-align: -2px; animation: ts-blink 1s steps(1) infinite; }
+@keyframes ts-blink { 50% { opacity: 0; } }
+.ts-console .console-foot { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; padding: 12px 18px; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--muted); }
+.ts-console .console-foot .stat { display: inline-flex; gap: 8px; align-items: center; }
+.ts-console .console-foot .stat:last-child { margin-left: auto; font-size: 0.7rem; }
+.ts-console .js-typing .ln:not(.cursor-ln) { opacity: 0; transform: translateY(4px); transition: opacity 0.35s, transform 0.35s; }
+.ts-console .js-typing .ln.show { opacity: 1; transform: none; }
+@media (max-width: 640px) { .ts-console .console-body { font-size: 0.72rem; min-height: 300px; } .ts-console .tag { min-width: 72px; } }

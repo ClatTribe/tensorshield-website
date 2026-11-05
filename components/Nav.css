@@ -1,0 +1,48 @@
+.ts-announce {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  padding: 9px 16px; font-size: 0.82rem; color: #dfe6d2;
+  background: linear-gradient(90deg, rgba(195, 255, 79, 0.08), rgba(70, 227, 255, 0.08));
+  border-bottom: 1px solid var(--line); text-align: center;
+}
+.ts-announce:hover { color: #fff; }
+.ts-announce .chip-new { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: #0b1004; background: var(--lime); padding: 2px 7px; border-radius: 5px; font-weight: 600; white-space: nowrap; }
+@media (max-width: 560px) { .ts-announce > span:nth-child(2) { font-size: 0.76rem; } }
+
+.ts-nav { position: sticky; top: 0; z-index: 50; transition: background 0.3s, border-color 0.3s; border-bottom: 1px solid transparent; }
+.ts-nav.scrolled { background: rgba(5, 6, 8, 0.72); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); border-bottom-color: var(--line); }
+.ts-nav .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 20px; }
+.ts-nav .nav-links { display: flex; align-items: center; gap: 4px; padding: 5px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255, 255, 255, 0.02); }
+.ts-nav .nav-link { display: inline-flex; align-items: center; gap: 4px; padding: 7px 14px; border-radius: 999px; font-size: 0.9rem; color: var(--muted); background: none; border: 0; cursor: pointer; font-family: inherit; transition: color 0.2s, background 0.2s; }
+.ts-nav .nav-link:hover, .ts-nav .nav-link.active { color: var(--text); background: rgba(255, 255, 255, 0.06); }
+.ts-nav .nav-cta { display: flex; align-items: center; gap: 10px; }
+
+.ts-nav .dd { position: relative; }
+.ts-nav .dd-menu {
+  position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(6px);
+  width: 320px; padding: 8px; border-radius: 18px; background: rgba(13, 16, 22, 0.96); border: 1px solid var(--line-2);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8); opacity: 0; visibility: hidden; transition: all 0.2s var(--ease);
+  backdrop-filter: blur(16px);
+}
+.ts-nav .dd-menu::before { content: ''; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
+.ts-nav .dd:hover .dd-menu, .ts-nav .dd:focus-within .dd-menu { opacity: 1; visibility: visible; transform: translateX(-50%); }
+.ts-nav .dd-menu.mega { width: 760px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 12px; }
+.ts-nav .dd-group-title { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); padding: 8px 14px 4px; margin: 0; }
+.ts-nav .dd-item { display: block; padding: 12px 14px; border-radius: 12px; }
+.ts-nav .dd-item:hover { background: rgba(255, 255, 255, 0.05); }
+.ts-nav .dd-title { display: block; font-weight: 550; font-size: 0.93rem; }
+.ts-nav .dd-desc { display: block; font-size: 0.8rem; color: var(--dim); margin-top: 2px; }
+
+.ts-nav .burger { display: none; background: none; border: 1px solid var(--line-2); color: var(--text); width: 42px; height: 42px; border-radius: 12px; place-items: center; cursor: pointer; }
+.ts-nav .mobile { border-top: 1px solid var(--line); background: rgba(5, 6, 8, 0.97); padding: 12px 0 20px; max-height: calc(100dvh - 110px); overflow-y: auto; }
+.ts-nav .mobile a:not(.btn) { display: block; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 1.02rem; }
+.ts-nav .mobile .btn { margin-top: 16px; }
+.ts-nav .mobile .m-group { padding: 10px 0 0; }
+.ts-nav .mobile .m-group p { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); margin: 6px 0 0; }
+.ts-nav .mobile .m-group a { padding: 10px 0 10px 12px !important; font-size: 0.96rem !important; }
+
+@media (max-width: 980px) {
+  .ts-nav .nav-links { display: none; }
+  .ts-nav .burger { display: grid; }
+}
+.ts-nav .cta-short { display: none; }
+@media (max-width: 520px) { .ts-nav .cta-long { display: none; } .ts-nav .cta-short { display: inline; } .ts-nav .nav-cta .btn { padding: 0 12px; } .ts-nav .nav-cta .btn svg { display: none; } }
