@@ -3,6 +3,7 @@
 //   RESEND_API_KEY  required to send; without it the endpoint returns 503 and the page falls back to mailto
 //   CONTACT_TO      defaults to tensorshield@gmail.com
 //   CONTACT_FROM    defaults to "TensorShield <onboarding@resend.dev>" (use a verified domain sender in production)
+//   SHEET_WEBHOOK_URL  Google Apps Script web app URL; each lead is also added as a row in the Google Sheet
 
 const MAX = { name: 120, email: 160, company: 160, phone: 40, country: 80, message: 3000, other: 200 };
 
@@ -54,7 +55,23 @@ export async function POST(req: Request) {
   }
 
   const key = process.env.RESEND_API_KEY;
-  if (!key) return json({ error: 'Email delivery not configured' }, 503);
+  const sheet = process.env.SHEET_WEBHOOK_URL;
+  if (!key && !sheet) return json({ error: 'Lead delivery not configured' }, 503);
+
+  // Google Sheet: one row per lead (Apps Script web app). Runs alongside the email.
+  let savedToSheet = false;
+  if (sheet) {
+    try {
+      const s = await fetch(sheet, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ received_at: new Date().toISOString(), ...lead }),
+        signal: AbortSignal.timeout(8000),
+      });
+      savedToSheet = s.ok;
+    } catch {}
+  }
+  if (!key) return savedToSheet ? json({ ok: true }) : json({ error: 'Sheet delivery failed' }, 502);
 
   const filled = Object.entries(lead).filter(([, v]) => v);
   const rows = filled
@@ -74,6 +91,6 @@ export async function POST(req: Request) {
     }),
   });
 
-  if (!r.ok) return json({ error: 'Email provider error' }, 502);
+  if (!r.ok && !savedToSheet) return json({ error: 'Email provider error' }, 502);
   return json({ ok: true });
 }
