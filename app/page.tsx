@@ -130,7 +130,7 @@ export default function Home() {
             <article className="tile reveal">
               <div className="tile-copy">
                 <h3>Critical issues in hours, where you work</h3>
-                <p>Alerts land in Slack, Jira or GitHub. Ship the fix and the retest runs on its own.</p>
+                <p>Alerts reach you by email and in the portal. Merge the fix and the retest runs on its own.</p>
               </div>
               <MockAlert />
             </article>

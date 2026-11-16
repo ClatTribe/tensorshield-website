@@ -12,15 +12,15 @@ export const metadata = pageMeta({
 });
 
 const controls = [
-  { icon: 'lock', t: 'Network-enforced scope', d: 'Each engagement runs on a dedicated scanner whose outbound traffic is restricted to the hosts in your signed scope. Out-of-scope requests are blocked and logged.' },
-  { icon: 'shield-check', t: 'Safe testing tiers', d: 'Default checks are non-destructive. Payloads that could modify data, exhaust resources or trigger outages are disabled unless you explicitly opt in, in writing.' },
+  { icon: 'lock', t: 'Network-enforced scope', d: 'Every run executes in its own isolated sandbox whose only route out is a scope gateway. It allows only the hosts in your approved scope, refuses private and cloud-metadata addresses, and logs every allowed and blocked request.' },
+  { icon: 'shield-check', t: 'Safe testing tiers', d: 'Default checks are non-destructive, and tests that could modify data or exhaust resources are excluded unless you opt in, in writing. Excluded paths are blocked at the network for plain HTTP; over HTTPS the agent is instructed to avoid them and an engineer reviews anything that touches them.' },
   { icon: 'gauge', t: 'Rate limits & testing windows', d: 'Per-host request limits and optional time windows keep load predictable. We never run denial-of-service tests.' },
-  { icon: 'stop', t: 'Kill switch', d: 'You can halt all testing instantly from the portal or by calling us. Agents stop mid-run.' },
+  { icon: 'stop', t: 'Kill switch', d: 'Stop any run from the portal or by calling us: traffic is cut at the network first, within seconds. A run that keeps trying out-of-scope targets is stopped automatically.' },
   { icon: 'server', t: 'Static, published egress IPs', d: 'Allow-list them on your WAF. We do not attempt to bypass or evade your defensive controls.' },
-  { icon: 'key', t: 'Secrets never reach the model', d: 'Test credentials are stored in a vault and used by an auth broker. AI agents receive short-lived session tokens only.' },
-  { icon: 'eye', t: 'Complete audit trail', d: 'Every request, tool call and agent decision is logged with hash-chained integrity, available to you on request.' },
-  { icon: 'users', t: 'Human approval gates', d: 'New assets discovered during recon are reported, never tested, until you approve adding them to scope.' },
-  { icon: 'refresh', t: 'Data retention & deletion', d: 'Engagement data is retained only as long as your contract requires, then destroyed, with a deletion certificate on request.' },
+  { icon: 'key', t: 'Credentials handled with care', d: 'Test credentials are encrypted in a vault, released only to the run that needs them and masked in every log and report. The AI agent uses them to log in, so we ask for dedicated, low-privilege test accounts.' },
+  { icon: 'eye', t: 'Tamper-evident audit trail', d: 'Every approval, sign-off and status change is kept in a hash-chained log, and every request a run makes is logged by the scope gateway. Its hash is included in your evidence pack.' },
+  { icon: 'users', t: 'Human approval gates', d: 'New assets are reported, never tested, until you approve adding them to scope, and a TensorShield engineer approves every scope change and every run.' },
+  { icon: 'refresh', t: 'Data retention & deletion', d: 'Engagement data is retained only as long as your contract requires, then deleted, with written confirmation on request.' },
 ];
 
 export default function TrustPage() {
@@ -68,7 +68,7 @@ export default function TrustPage() {
           <ul>
             <li><strong>What AI does:</strong> plans and executes test steps, analyses responses, attempts exploitation within scope, de-duplicates results and drafts report text.</li>
             <li><strong>What humans do:</strong> agree scope and rules of engagement, verify serious findings, confirm severity, review every report, sign attestation letters, and perform expert-led testing in every Audit-Ready Pentest.</li>
-            <li><strong>Models:</strong> we use open-weight large language models, either self-hosted or accessed through providers under zero-data-retention terms. A self-hosted-only option is available for confidential environments.</li>
+            <li><strong>Models:</strong> we use large language models from providers that do not store your data or train on it by default, processed in India for Indian customers where the provider supports it. The exact model, provider and region are named in your authorisation letter.</li>
             <li><strong>Training:</strong> your data is never used to train or fine-tune models.</li>
             <li><strong>Sub-processors:</strong> every infrastructure and model provider that may process engagement data is named in your authorisation letter and data processing agreement before testing begins.</li>
           </ul>

@@ -14,46 +14,46 @@ export const metadata = pageMeta({
 });
 
 const pipeline = [
-  { icon: 'radar', t: 'Discover', d: 'Subdomains, live hosts, open services, technologies and certificates. New assets are flagged for your approval before they are ever tested.' },
-  { icon: 'key', t: 'Authenticate', d: 'An auth broker logs in as each role you provide, handles MFA test seeds and token refresh, and keeps secrets out of the AI’s reach.' },
-  { icon: 'layers', t: 'Map', d: 'Authenticated crawling plus your OpenAPI, GraphQL or Postman specs build a complete map of pages, endpoints and parameters.' },
+  { icon: 'radar', t: 'Discover', d: 'Give us your app’s URL: we check DNS, technologies, login pages and published API specs, and propose the scope for you to approve. Nothing is tested until it is in scope.' },
+  { icon: 'key', t: 'Authenticate', d: 'We test as each role you provide, with dedicated test accounts stored encrypted and checked before every run. Password and token logins are automated; MFA and SSO flows are tested by our engineers.' },
+  { icon: 'layers', t: 'Map', d: 'Authenticated crawling plus your OpenAPI or Postman specs map pages, endpoints and parameters.' },
   { icon: 'bolt', t: 'Attack', d: 'Deterministic tools cover breadth; AI agents go deep: multi-role access control, chained requests, business-logic probes.' },
-  { icon: 'fingerprint', t: 'Prove', d: 'A finding exists only if it reproduces. Each one is saved with a replayable proof of concept and hashed request/response evidence.' },
+  { icon: 'fingerprint', t: 'Prove', d: 'A finding exists only if it reproduces. Where possible it is proven by a deterministic check (an out-of-band callback, another user’s canary in a response), with hashed request and response evidence.' },
   { icon: 'users', t: 'Verify', d: 'A senior engineer reproduces every Critical and High, confirms impact and severity, and writes remediation guidance your team can act on.' },
 ];
 
 const cadence = [
-  { t: 'Daily light', d: 'Attack-surface diff, changed endpoints, high-signal checks on what moved.' },
-  { t: 'Weekly deep', d: 'Full authenticated testing of every app, including multi-role access control.' },
-  { t: 'Monthly full', d: 'Complete agent-driven assessment with chained attack paths across the whole surface.' },
-  { t: 'On every deploy', d: 'A webhook from GitHub, GitLab or CI triggers a targeted run on what just shipped.' },
+  { t: 'On a schedule', d: 'Weekly, monthly or quarterly authenticated testing of every app, including multi-role access control.' },
+  { t: 'On every deploy', d: 'A signed webhook from GitHub or any CI pipeline triggers a quick run on what just shipped.' },
+  { t: 'When you fix', d: 'Mention a finding ID in a commit or pull request and its proof is replayed automatically.' },
+  { t: 'When a new exploit appears', d: 'A newly exploited CVE that matches your technology stack triggers a targeted check.' },
 ];
 
 const coverage: [string, string][] = [
-  ['API1 · Broken Object Level Authorization (BOLA)', 'Multi-role request replay across every object endpoint'],
-  ['API2 · Broken Authentication', 'Login, reset, MFA and token handling; JWT weaknesses'],
+  ['API1 · Broken Object Level Authorization (BOLA)', 'Multi-role request replay, proven with per-account canary values'],
+  ['API2 · Broken Authentication', 'Login, reset and token handling; JWT weaknesses (MFA and SSO by our engineers)'],
   ['API3 · Broken Object Property Level Authorization', 'Mass assignment and excessive data exposure checks'],
   ['API4 · Unrestricted Resource Consumption', 'Safe, rate-limited checks for missing limits (no load testing)'],
   ['API5 · Broken Function Level Authorization', 'Privileged functions replayed as lower-privilege roles'],
   ['API6 · Unrestricted Access to Sensitive Business Flows', 'Agent-driven abuse of sign-up, checkout and invite flows'],
   ['API7 · Server-Side Request Forgery', 'Out-of-band callback verification on URL-handling parameters'],
   ['API8 · Security Misconfiguration', 'Headers, CORS, TLS, verbose errors, exposed debug endpoints'],
-  ['API9 · Improper Inventory Management', 'Shadow, deprecated and undocumented endpoint discovery'],
+  ['API9 · Improper Inventory Management', 'Deprecated and undocumented endpoints reported when found during testing'],
   ['API10 · Unsafe Consumption of APIs', 'Injection through third-party data and webhook handlers'],
 ];
 
 const lifecycle = [
   { s: 'New', c: 'crit', d: 'Proven and reproduced' },
   { s: 'Validated', c: 'high', d: 'Human-verified, ticket opened' },
-  { s: 'Fixed', c: 'med', d: 'Your team marks it resolved' },
+  { s: 'Fixed', c: 'med', d: 'You request a retest or merge the fix' },
   { s: 'Retest passed', c: 'low', d: 'PoC replayed, closed with evidence' },
 ];
 
 const faqs = [
   { q: 'Do I need to install anything?', a: 'No. For external web apps and APIs, testing runs from our infrastructure against your internet-facing assets. You allow-list our static IPs, give us test accounts and API specs, and we do the rest.' },
-  { q: 'How do you avoid testing things we did not authorise?', a: 'Your signed scope is compiled into a network-level allow-list on a dedicated scanner. Anything outside it is blocked and logged, regardless of what an AI agent decides. Newly discovered assets are only reported, and never tested until you approve them.' },
+  { q: 'How do you avoid testing things we did not authorise?', a: 'Your approved scope is compiled into a network-level allow-list for each run’s isolated sandbox. Anything outside it is blocked and logged, regardless of what an AI agent decides. Newly discovered assets are only reported, and never tested until you approve them.' },
   { q: 'How is this different from DAST tools?', a: 'DAST tools crawl and match known patterns, usually as a single user. TensorShield tests as multiple roles, reasons about what each response means, chains steps together and proves exploitability, then a human verifies the result. That is how it finds access-control and logic flaws that scanners miss.' },
-  { q: 'What happens when we fix something?', a: 'Mark it fixed in your tracker or the portal. We replay the stored proof of concept to confirm the fix, close the finding with retest evidence and update your reports, usually within minutes.' },
+  { q: 'What happens when we fix something?', a: 'Request a retest in the portal, or mention the finding ID in your commit or pull request. We replay the proof through the same guardrails; if it no longer reproduces and the route was reached, the finding closes with retest evidence. On Audit-Ready engagements an engineer confirms the closure and issues a retest letter.' },
   { q: 'Can you test staging instead of production?', a: 'Yes, and for many teams that is the best choice. We recommend a staging environment that mirrors production, with production covered by safe, non-intrusive checks.' },
 ];
 
@@ -154,11 +154,11 @@ export default function PlatformPage() {
             <ul className="checks">
               <li>A signed authorisation letter and rules of engagement (we provide the templates)</li>
               <li>In-scope domains, API base URLs and any out-of-scope paths</li>
-              <li>OpenAPI / Swagger, Postman, GraphQL schema or a short HAR walkthrough</li>
+              <li>OpenAPI / Swagger or a Postman collection (a GraphQL schema or HAR walkthrough helps our engineers)</li>
               <li>Two test accounts per user role (two tenants for multi-tenant apps)</li>
               <li>Our static egress IPs allow-listed on your WAF and rate limiter</li>
               <li>A security contact and an emergency phone number</li>
-              <li>Optional: a deploy webhook and your Slack, Jira, GitHub or Linear workspace</li>
+              <li>Optional: a GitHub or CI deploy webhook, and who should receive email alerts</li>
             </ul>
           </div>
         </div>

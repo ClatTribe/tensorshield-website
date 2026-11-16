@@ -7,7 +7,7 @@ import './Compare.css';
 type Cell = { t: string; ok?: boolean; bad?: boolean };
 const cols = ['Traditional firm', 'Scanner', 'TensorShield'];
 const rows: { label: string; firm: Cell; scan: Cell; us: Cell }[] = [
-  { label: 'How often you’re tested', firm: { t: 'Once a year', bad: true }, scan: { t: 'Daily, but surface-level' }, us: { t: 'Every week and every release', ok: true } },
+  { label: 'How often you’re tested', firm: { t: 'Once a year', bad: true }, scan: { t: 'Daily, but surface-level' }, us: { t: 'On a schedule and every release', ok: true } },
   { label: 'Time to catch a new issue', firm: { t: 'Up to 12 months', bad: true }, scan: { t: 'Minutes, but unverified' }, us: { t: 'Hours, verified with proof', ok: true } },
   { label: 'Findings checked by a human expert', firm: { t: 'Yes', ok: true }, scan: { t: 'No, lots of false alarms', bad: true }, us: { t: 'Yes, every serious one', ok: true } },
   { label: 'Report auditors treat as a pentest', firm: { t: 'Yes, once a year', ok: true }, scan: { t: 'Often rejected as “just a scan”', bad: true }, us: { t: 'Yes, signed, whenever you need it', ok: true } },
