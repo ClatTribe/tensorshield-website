@@ -55,7 +55,7 @@ export const offers: Offer[] = [
       'Critical issues verified and alerted within 24 hours',
       'Unlimited retests as you fix',
       'Quarterly evidence reports for your auditor',
-      'Alerts in Slack, Jira, GitHub or email',
+      'Alerts by email and in the portal; retests on merge via GitHub',
     ],
   },
   {
@@ -75,7 +75,6 @@ export const offers: Offer[] = [
       'Quarterly expert deep-dive testing',
       'Critical issues alerted within 12 hours',
       'A named security analyst',
-      'White-label reports for agencies',
     ],
   },
 ];

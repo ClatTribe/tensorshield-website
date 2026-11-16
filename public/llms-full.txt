@@ -1,7 +1,7 @@
 # TensorShield: full site content
 
 Source: https://tensorshield.vercel.app
-Generated: 2026-11-04
+Generated: 2026-11-16
 
 
 ---
@@ -42,7 +42,7 @@ TensorShieldevery week · every release
 JanAprJulOctDec
 | Traditional pentest firm | Automated scanner | TensorShield Continuous |
 Price | $5,000–25,000₹40,000–1,50,000+ per test | $70–500 / month₹5,000–40,000 / month | $333₹16,666/month, yearly pentest included |
-How often you’re tested | Once a year | Daily, but surface-level | Every week and every release |
+How often you’re tested | Once a year | Daily, but surface-level | On a schedule and every release |
 Time to catch a new issue | Up to 12 months | Minutes, but unverified | Hours, verified with proof |
 Findings checked by a human expert | Yes | No, lots of false alarms | Yes, every serious one |
 Report auditors treat as a pentest | Yes, once a year | Often rejected as “just a scan” | Yes, signed, whenever you need it |
@@ -103,7 +103,7 @@ Billed yearly at $3,990₹1,99,990 · Up to 3 appsBook a call
 - Critical issues verified and alerted within 24 hours
 - Unlimited retests as you fix
 - Quarterly evidence reports for your auditor
-- Alerts in Slack, Jira, GitHub or email
+- Alerts by email and in the portal; retests on merge via GitHub
 You have 4 or more apps
 
 ### Scale
@@ -115,7 +115,6 @@ Billed yearly at $9,990₹4,99,990 · Up to 10 appsTalk to us
 - Quarterly expert deep-dive testing
 - Critical issues alerted within 12 hours
 - A named security analyst
-- White-label reports for agencies
 Prices exclude 18% GST. An “app” is one web application and the APIs it uses. Not sure which fits? Ask us, and we’ll tell you honestly.
 AM
 Built by a practitioner
@@ -154,15 +153,15 @@ In shortWe discover your attack surface, log in as every role, attack like a ski
 01
 
 ### Discover
-Subdomains, live hosts, open services, technologies and certificates. New assets are flagged for your approval before they are ever tested.
+Give us your app’s URL: we check DNS, technologies, login pages and published API specs, and propose the scope for you to approve. Nothing is tested until it is in scope.
 02
 
 ### Authenticate
-An auth broker logs in as each role you provide, handles MFA test seeds and token refresh, and keeps secrets out of the AI’s reach.
+We test as each role you provide, with dedicated test accounts stored encrypted and checked before every run. Password and token logins are automated; MFA and SSO flows are tested by our engineers.
 03
 
 ### Map
-Authenticated crawling plus your OpenAPI, GraphQL or Postman specs build a complete map of pages, endpoints and parameters.
+Authenticated crawling plus your OpenAPI or Postman specs map pages, endpoints and parameters.
 04
 
 ### Attack
@@ -170,7 +169,7 @@ Deterministic tools cover breadth; AI agents go deep: multi-role access control,
 05
 
 ### Prove
-A finding exists only if it reproduces. Each one is saved with a replayable proof of concept and hashed request/response evidence.
+A finding exists only if it reproduces. Where possible it is proven by a deterministic check (an out-of-band callback, another user’s canary in a response), with hashed request and response evidence.
 06
 
 ### Verify
@@ -180,31 +179,31 @@ Cadence
 ## Tested on a schedule. And on every change.
 Continuous doesn’t mean noisy. We baseline your application, then focus each run on what changed, so you hear about new risk in hours and never about the same issue twice.
 
-### Daily light
-Attack-surface diff, changed endpoints, high-signal checks on what moved.
-
-### Weekly deep
-Full authenticated testing of every app, including multi-role access control.
-
-### Monthly full
-Complete agent-driven assessment with chained attack paths across the whole surface.
+### On a schedule
+Weekly, monthly or quarterly authenticated testing of every app, including multi-role access control.
 
 ### On every deploy
-A webhook from GitHub, GitLab or CI triggers a targeted run on what just shipped.
+A signed webhook from GitHub or any CI pipeline triggers a quick run on what just shipped.
+
+### When you fix
+Mention a finding ID in a commit or pull request and its proof is replayed automatically.
+
+### When a new exploit appears
+A newly exploited CVE that matches your technology stack triggers a targeted check.
 Coverage
 
 ## OWASP API Security Top 10, tested end to end.
 Alongside the OWASP Top 10:2025 and the OWASP Web Security Testing Guide, here is how each API risk is covered.
 Risk | How TensorShield tests it |
-API1 · Broken Object Level Authorization (BOLA) | Multi-role request replay across every object endpoint |
-API2 · Broken Authentication | Login, reset, MFA and token handling; JWT weaknesses |
+API1 · Broken Object Level Authorization (BOLA) | Multi-role request replay, proven with per-account canary values |
+API2 · Broken Authentication | Login, reset and token handling; JWT weaknesses (MFA and SSO by our engineers) |
 API3 · Broken Object Property Level Authorization | Mass assignment and excessive data exposure checks |
 API4 · Unrestricted Resource Consumption | Safe, rate-limited checks for missing limits (no load testing) |
 API5 · Broken Function Level Authorization | Privileged functions replayed as lower-privilege roles |
 API6 · Unrestricted Access to Sensitive Business Flows | Agent-driven abuse of sign-up, checkout and invite flows |
 API7 · Server-Side Request Forgery | Out-of-band callback verification on URL-handling parameters |
 API8 · Security Misconfiguration | Headers, CORS, TLS, verbose errors, exposed debug endpoints |
-API9 · Improper Inventory Management | Shadow, deprecated and undocumented endpoint discovery |
+API9 · Improper Inventory Management | Deprecated and undocumented endpoints reported when found during testing |
 API10 · Unsafe Consumption of APIs | Injection through third-party data and webhook handlers |
 Business-logic flaws, complex MFA/SSO flows and race conditions are assessed by a senior expert in every Audit-Ready Pentest.
 Finding lifecycle
@@ -216,7 +215,7 @@ Proven and reproduced
 Validated
 Human-verified, ticket opened
 Fixed
-Your team marks it resolved
+You request a retest or merge the fix
 Retest passed
 PoC replayed, closed with evidence
 Onboarding
@@ -225,11 +224,11 @@ Onboarding
 There is nothing to install. Here is everything we need from you to start testing.Book a free call
 - A signed authorisation letter and rules of engagement (we provide the templates)
 - In-scope domains, API base URLs and any out-of-scope paths
-- OpenAPI / Swagger, Postman, GraphQL schema or a short HAR walkthrough
+- OpenAPI / Swagger or a Postman collection (a GraphQL schema or HAR walkthrough helps our engineers)
 - Two test accounts per user role (two tenants for multi-tenant apps)
 - Our static egress IPs allow-listed on your WAF and rate limiter
 - A security contact and an emergency phone number
-- Optional: a deploy webhook and your Slack, Jira, GitHub or Linear workspace
+- Optional: a GitHub or CI deploy webhook, and who should receive email alerts
 FAQ
 
 ## Platform questions
@@ -237,11 +236,11 @@ Can’t find what you need? Ask us directly
 Do I need to install anything?
 No. For external web apps and APIs, testing runs from our infrastructure against your internet-facing assets. You allow-list our static IPs, give us test accounts and API specs, and we do the rest.
 How do you avoid testing things we did not authorise?
-Your signed scope is compiled into a network-level allow-list on a dedicated scanner. Anything outside it is blocked and logged, regardless of what an AI agent decides. Newly discovered assets are only reported, and never tested until you approve them.
+Your approved scope is compiled into a network-level allow-list for each run’s isolated sandbox. Anything outside it is blocked and logged, regardless of what an AI agent decides. Newly discovered assets are only reported, and never tested until you approve them.
 How is this different from DAST tools?
 DAST tools crawl and match known patterns, usually as a single user. TensorShield tests as multiple roles, reasons about what each response means, chains steps together and proves exploitability, then a human verifies the result. That is how it finds access-control and logic flaws that scanners miss.
 What happens when we fix something?
-Mark it fixed in your tracker or the portal. We replay the stored proof of concept to confirm the fix, close the finding with retest evidence and update your reports, usually within minutes.
+Request a retest in the portal, or mention the finding ID in your commit or pull request. We replay the proof through the same guardrails; if it no longer reproduces and the route was reached, the finding closes with retest evidence. On Audit-Ready engagements an engineer confirms the closure and issues a retest letter.
 Can you test staging instead of production?
 Yes, and for many teams that is the best choice. We recommend a staging environment that mirrors production, with production covered by safe, non-intrusive checks.
 
@@ -283,7 +282,7 @@ Billed yearly at $3,990₹1,99,990 · Up to 3 appsBook a call
 - Critical issues verified and alerted within 24 hours
 - Unlimited retests as you fix
 - Quarterly evidence reports for your auditor
-- Alerts in Slack, Jira, GitHub or email
+- Alerts by email and in the portal; retests on merge via GitHub
 You have 4 or more apps
 
 ### Scale
@@ -295,7 +294,6 @@ Billed yearly at $9,990₹4,99,990 · Up to 10 appsTalk to us
 - Quarterly expert deep-dive testing
 - Critical issues alerted within 12 hours
 - A named security analyst
-- White-label reports for agencies
 Prices exclude 18% GST. An “app” is one web application and the APIs it uses. Not sure which fits? Ask us, and we’ll tell you honestly.
 Which one is right for me?
 
@@ -314,7 +312,7 @@ How we compare
 ## Tested every release. Signed by an expert.
 | Traditional pentest firm | Automated scanner | TensorShield Continuous |
 Price | $5,000–25,000₹40,000–1,50,000+ per test | $70–500 / month₹5,000–40,000 / month | $333₹16,666/month, yearly pentest included |
-How often you’re tested | Once a year | Daily, but surface-level | Every week and every release |
+How often you’re tested | Once a year | Daily, but surface-level | On a schedule and every release |
 Time to catch a new issue | Up to 12 months | Minutes, but unverified | Hours, verified with proof |
 Findings checked by a human expert | Yes | No, lots of false alarms | Yes, every serious one |
 Report auditors treat as a pentest | Yes, once a year | Often rejected as “just a scan” | Yes, signed, whenever you need it |
@@ -382,7 +380,7 @@ Mapped to the controls your auditor samples, timed inside your audit window, wit
 AI agents test every release, so new code never sits untested until next year.
 
 ### Zero extra work for engineers
-Only expert-verified issues reach Slack or Jira, each with proof and a clear fix.
+Only verified issues reach your inbox, each with proof and a clear fix.
 How it works
 
 ## From questionnaire to signed report in a week.
@@ -414,7 +412,7 @@ Billed yearly at $3,990₹1,99,990 · Up to 3 apps · + GST
 - Critical issues verified and alerted within 24 hours
 - Unlimited retests as you fix
 - Quarterly evidence reports for your auditor
-- Alerts in Slack, Jira, GitHub or emailBook a call
+- Alerts by email and in the portal; retests on merge via GitHubBook a call
 FAQ
 
 ## Startups: common questions
@@ -448,7 +446,7 @@ Built by ex-Google engineers · Offense is the best defense
 TensorShield 10:42
 critical Broken access control on /invoices/{id}
 Found 3h after release v2.14.0 · verified by an expert
-View proofCreate Jira issue
+View proofRequest retest
 fixed Retest passed for /exports/all
 Sound familiar?
 
@@ -466,11 +464,11 @@ How TensorShield helps
 
 ## Scale your offence without scaling headcount.
 
-### Full attack-surface coverage
-New hosts, endpoints and certificates are discovered daily and added to testing once you approve.
+### Coverage across your portfolio
+Every app and API you add is tested on a schedule and on every deploy, and anything new is only tested once you approve it.
 
 ### Deploy-triggered testing
-Webhooks from GitHub, GitLab or CI start a targeted run on whatever just shipped.
+Signed webhooks from GitHub or any CI pipeline start a quick run on whatever just shipped.
 
 ### A named security analyst
 One expert who knows your products, reviews findings and joins your security reviews.
@@ -487,11 +485,11 @@ We inventory your internet-facing apps and APIs and agree scope and priorities w
 - 02
 
 ### Connect your workflow
-Deploy webhooks, Slack or Teams, and Jira or Linear, so findings land with the right team.
+Deploy webhooks and per-team email alerts, so findings reach the right people.
 - 03
 
 ### Continuous testing begins
-Daily, weekly and monthly runs plus deploy-triggered tests, with critical issues alerted within 12 hours.
+Scheduled runs plus deploy-triggered tests, with critical issues alerted within 12 hours.
 - 04
 
 ### Quarterly deep dives
@@ -507,8 +505,7 @@ Billed yearly at $9,990₹4,99,990 · Up to 10 apps · + GST
 - Two audit-ready pentests a year
 - Quarterly expert deep-dive testing
 - Critical issues alerted within 12 hours
-- A named security analyst
-- White-label reports for agenciesTalk to us
+- A named security analystTalk to us
 FAQ
 
 ## Growing teams: common questions
@@ -518,9 +515,9 @@ For web apps and APIs, yes: Scale includes two signed, expert-led pentests a yea
 How do you avoid testing assets we don’t own?
 Scope is enforced at the network level. Newly discovered assets are reported to you and only tested after you approve them.
 Can findings route to different teams?
-Yes. Each app can send findings to its own Slack channel and Jira or Linear project.
+Each team gets portal access and email alerts for the apps they own. Slack, Jira and Linear integrations are on our roadmap.
 Do you support white-label reports?
-Yes, for agencies and MSSPs on the Scale plan.
+For agencies and MSSPs on the Scale plan, talk to us: branded reports are on our roadmap.
 
 ## Test your whole portfolio, not a sample.
 Book a free call. We’ll map your attack surface and show you what continuous coverage looks like.
@@ -581,7 +578,7 @@ We map payment, lending and account APIs and agree which roles and tenants to te
 - 02
 
 ### Test every release
-Every deploy triggers targeted testing of what changed, with critical issues alerted within 24 hours.
+Every deploy triggers a quick test run, with critical issues alerted within 24 hours.
 - 03
 
 ### Verify and fix
@@ -602,7 +599,7 @@ Billed yearly at $3,990₹1,99,990 · Up to 3 apps · + GST
 - Critical issues verified and alerted within 24 hours
 - Unlimited retests as you fix
 - Quarterly evidence reports for your auditor
-- Alerts in Slack, Jira, GitHub or emailBook a call
+- Alerts by email and in the portal; retests on merge via GitHubBook a call
 FAQ
 
 ## Fintech: common questions
@@ -696,7 +693,7 @@ Billed yearly at $3,990₹1,99,990 · Up to 3 apps · + GST
 - Critical issues verified and alerted within 24 hours
 - Unlimited retests as you fix
 - Quarterly evidence reports for your auditor
-- Alerts in Slack, Jira, GitHub or emailBook a call
+- Alerts by email and in the portal; retests on merge via GitHubBook a call
 FAQ
 
 ## Healthtech: common questions
@@ -898,31 +895,31 @@ Trust & safety
 Letting an AI attack your systems should make you ask hard questions. Here are our answers: what we test, how we limit it, how we use AI, and who is accountable.
 
 ### Network-enforced scope
-Each engagement runs on a dedicated scanner whose outbound traffic is restricted to the hosts in your signed scope. Out-of-scope requests are blocked and logged.
+Every run executes in its own isolated sandbox whose only route out is a scope gateway. It allows only the hosts in your approved scope, refuses private and cloud-metadata addresses, and logs every allowed and blocked request.
 
 ### Safe testing tiers
-Default checks are non-destructive. Payloads that could modify data, exhaust resources or trigger outages are disabled unless you explicitly opt in, in writing.
+Default checks are non-destructive, and tests that could modify data or exhaust resources are excluded unless you opt in, in writing. Excluded paths are blocked at the network for plain HTTP; over HTTPS the agent is instructed to avoid them and an engineer reviews anything that touches them.
 
 ### Rate limits & testing windows
 Per-host request limits and optional time windows keep load predictable. We never run denial-of-service tests.
 
 ### Kill switch
-You can halt all testing instantly from the portal or by calling us. Agents stop mid-run.
+Stop any run from the portal or by calling us: traffic is cut at the network first, within seconds. A run that keeps trying out-of-scope targets is stopped automatically.
 
 ### Static, published egress IPs
 Allow-list them on your WAF. We do not attempt to bypass or evade your defensive controls.
 
-### Secrets never reach the model
-Test credentials are stored in a vault and used by an auth broker. AI agents receive short-lived session tokens only.
+### Credentials handled with care
+Test credentials are encrypted in a vault, released only to the run that needs them and masked in every log and report. The AI agent uses them to log in, so we ask for dedicated, low-privilege test accounts.
 
-### Complete audit trail
-Every request, tool call and agent decision is logged with hash-chained integrity, available to you on request.
+### Tamper-evident audit trail
+Every approval, sign-off and status change is kept in a hash-chained log, and every request a run makes is logged by the scope gateway. Its hash is included in your evidence pack.
 
 ### Human approval gates
-New assets discovered during recon are reported, never tested, until you approve adding them to scope.
+New assets are reported, never tested, until you approve adding them to scope, and a TensorShield engineer approves every scope change and every run.
 
 ### Data retention & deletion
-Engagement data is retained only as long as your contract requires, then destroyed, with a deletion certificate on request.
+Engagement data is retained only as long as your contract requires, then deleted, with written confirmation on request.
 Methodology
 
 ## How we test
@@ -939,7 +936,7 @@ A finding is reported only if it is reproducible and supported by captured evide
 We believe you have a right to know exactly how AI is involved in testing your systems.
 - What AI does: plans and executes test steps, analyses responses, attempts exploitation within scope, de-duplicates results and drafts report text.
 - What humans do: agree scope and rules of engagement, verify serious findings, confirm severity, review every report, sign attestation letters, and perform expert-led testing in every Audit-Ready Pentest.
-- Models: we use open-weight large language models, either self-hosted or accessed through providers under zero-data-retention terms. A self-hosted-only option is available for confidential environments.
+- Models: we use large language models from providers that do not store your data or train on it by default, processed in India for Indian customers where the provider supports it. The exact model, provider and region are named in your authorisation letter.
 - Training: your data is never used to train or fine-tune models.
 - Sub-processors: every infrastructure and model provider that may process engagement data is named in your authorisation letter and data processing agreement before testing begins.
 

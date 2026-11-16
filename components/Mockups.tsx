@@ -42,7 +42,7 @@ export function MockAlert() {
           <p className="ma-who"><strong>TensorShield</strong> <span className="dim mono">10:42</span></p>
           <p><span className="sev sev-crit">critical</span> Broken access control on <span className="mono">/invoices/&#123;id&#125;</span></p>
           <p className="dim">Found 3h after release v2.14.0 · verified by an expert</p>
-          <div className="ma-actions"><span>View proof</span><span>Create Jira issue</span></div>
+          <div className="ma-actions"><span>View proof</span><span>Request retest</span></div>
         </div>
       </div>
       <div className="ma-msg faded">
